@@ -30,16 +30,16 @@ todo: citation
 > eprint = {[https://www.science.org/doi/pdf/10.1126/scirobotics.adn4722}}](https://www.science.org/doi/pdf/10.1126/scirobotics.adn4722}}) -->
 
 
-## Data
+## Dryad
 
 The primary data and code is stored in the `sets.tar.gz` tarball and can be extracted by `tar -zxvf sets.tar.gz` on linux systems. 
 
-The directory contains the following subdirectories: `src` contains the solver and problem models in cpp and python bindings, `data` and `plots` stores the output of python scripts found in `scripts` with parameters specified in `configs`. We include three scripts: `rollout.py`, `value_convergence.py`, and `policy_convergence.py`, that should produce the plots in Figure 5 in the paper. There may be some small discreptancy in results because the solutions are anytime and therefore depend on machine-specific processor power. 
+The directory contains the following subdirectories: `src` contains the solver and problem models in cpp and python bindings, `data` and `plots` stores the output of python scripts found in `scripts` with parameters specified in `configs`. We include two scripts: `value_convergence.py`, and `policy_convergence.py`, that should produce the plots in Figure 5 in the paper. There may be some small discreptancy in results because the solutions are anytime and therefore depend on machine-specific processor power. 
 
 
-## Code/Software
+## Github
 
-An up to date version of the code can be cloned from [todo: github link] (todo: github link). Any updates will be pushed there. 
+An up to date version of the code can be cloned from [https://github.com/aerorobotics/sets](https://github.com/aerorobotics/sets). Any updates will be pushed there. 
 
 
 ## Installation
@@ -72,11 +72,11 @@ make
 
 ## Scripts
 
-To make the rollout plot (fig 5a/b)
+<!-- To make the rollout plot (fig 5a/b)
 ```
 cd ~/scripts/
 python rollout.py
-``` 
+```  -->
 
 To make the value convergence plot (fig 5c)
 ```
