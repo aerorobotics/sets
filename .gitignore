@@ -1,0 +1,7 @@
+**/build/**
+**/data/**
+**/plots/**
+**/.vscode/**
+**/__pycache__/**
+*.orig
+.DS_Store

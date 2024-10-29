@@ -1,0 +1,233 @@
+ # aircraft parameters from Beard and McClain 
+ config_name: "rollout"
+ config_path: "../configs/sixdofaircraft/rollout.yaml"
+ # modes
+ flight_mode: "fixed_wing" # ["quadrotor", "fixed_wing", "transition"]
+ aero_mode: "linear_with_thermal" # ["empty", "linear", "nonlinear", "linear_with_thermal"]
+ # aero_mode: "linear" # ["empty", "linear", "nonlinear"]
+ wind_mode: "thermal" # ["empty", "thermal"]
+ reward_mode: "observation" # ["regulation", "observation"]
+ target_special_idxs: [0]
+ targets: [ [  450.0,  450.0, -350.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], ]
+ ground_mdp_H: 60000 # 60 seconds = 10.0 min 
+ # reward parameters: 
+  # double weight_alive = m_reward_parameters[0];
+  # double weight_target = m_reward_parameters[1];
+  # double timescale_target = m_reward_parameters[2];
+  # double weight_energy = m_reward_parameters[3];
+  # double lengthscale_target = m_reward_parameters[4];
+  # double weight_angle = m_reward_parameters[5];
+  # double scale_angle = m_reward_parameters[6];
+ # reward_parameters: [0.1, 0.8, 0.0001, 0.1, 5000, 0.00, 1.0]
+ 
+ # reward_parameters: [0.1, 0.5, 0.0001, 0.5, 1000, 0.1, 1.0]
+ reward_parameters: [0.2, 0.6, 0.0001, 0.2, 1000, 0.2, 1.0]
+
+ # reward_parameters: [0.2, 0.7, 0.0000005, 0.1, 200, 0.1, 1.0]
+ # reward_parameters: [0.3, 0.3, 0.0000005, 0.3, 200, 0.1, 1.0]
+ # reward_parameters: [0.3, 0.3, 0.0001, 0.3, 200, 0.1, 1.0]
+ # reward_parameters: [0.2, 0.0, 0.0000005, 0.8, 1, 0.0, 1.0]
+ ground_mdp_V_alive: 100 # order of depth of tree search 
+ # aersonde
+ # Table E1
+ mass: 11.0 # kg
+ gravity: 9.8 # m / s^2
+ Ixx: 0.824 # kg m^2
+ Ixz: 0.120 # kg m^2
+ Iyy: 1.135 # kg m^2
+ Izx: 0.120 # kg m^2
+ Izz: 1.759 # kg m^2
+ ground_mdp_name: "GameSixDOFAircraft"
+ ground_mdp_verbose: False
+ ground_mdp_state_labels: ["p_x", "p_y", "p_z", "v_x", "v_y", "v_z", "phi", "theta", "psi", "p", "q", "r", "time"]
+ ground_mdp_control_labels: ["delta_e", "delta_r", "delta_a", "thrust_z", "tau_x", "tau_y", "tau_z", "thrust_x"]
+ ground_mdp_dt: 0.01
+ ground_mdp_control_hold: 1
+ ground_mdp_x0: [  -0.0, -0.0, -500.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] 
+ ground_mdp_xd: [   0.0, 0.0, -100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] 
+ ground_mdp_X: [
+   # -750., -750., -750.2, -600.0, -600.0, -600.0, -2.0, -2.0, -100.0, -50.0, -50.0, -50.0, 0.0,
+   #  750.,  750., -0.2,  600.0,  600.0,  600.0,  2.0,  2.0,  100.0,  50.0,  50.0,  50.0, 100000000.0 ]
+    -1000., -1000., -1000.2, -600.0, -600.0, -600.0, -2.0, -2.0, -100.0, -50.0, -50.0, -50.0, 0.0,
+    1000.,  1000., -0.2,  600.0,  600.0,  600.0,  2.0,  2.0,  100.0,  50.0,  50.0,  50.0, 100000000.0 ]
+ ground_mdp_special_obstacle_idxs: []
+ ground_mdp_special_obstacle_radius: 0.8
+ ground_mdp_obstacles: [ ]
+ ground_mdp_U: [ 
+  # \delta_e, \delta_r, \delta_a, tau_{1,2,3,4}, ...
+  -0.5, -0.5, -0.5, 0.0, 0.0, 0.0, -0.0, -0.0, 
+   0.5,  0.5,  0.5, 0.0, 0.0, 0.0,  0.0,  0.0] # rad 
+ ground_mdp_gamma: 1.0
+ ground_mdp_Qx: [ 500000.0, 500000.0, 500000.0, 0.0, 0.0, 0.0, 1000000.0, 1000000.0, 1000000.0, 0.0, 0.0, 0.0, 0.0] 
+ ground_mdp_Qx_equ: [ 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0]
+ ground_mdp_Qf: [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] 
+ ground_mdp_Qu: [ 0.0, 0.0, 0.0, 1.0, 10000.0, 10000.0, 10000.0, 0.0]
+ Xs_thermal: [
+  [
+   # -1000, -1000, -1000.2, -600.0, -600.0, -600.0, -2.0, -2.0, -10.0, -50.0, -50.0, -50.0, 0.0,
+   # -250, -250, -0.2,  600.0,  600.0,  600.0,  2.0,  2.0,  10.0,  50.0,  50.0,  50.0, 100000000.0 
+   # -1000, -1000, -1000.2, -600.0, -600.0, -600.0, -2.0, -2.0, -1000.0, -50.0, -50.0, -50.0, 0.0,
+   #  1000,  1000, -0.2,  600.0,  600.0,  600.0,  2.0,  2.0,  1000.0,  50.0,  50.0,  50.0, 100000000.0 
+   # -750, -750, -600.2, -600.0, -600.0, -600.0, -2.0, -2.0, -10.0, -50.0, -50.0, -50.0, 0.0,
+   # -150, -150, -0.2,  600.0,  600.0,  600.0,  2.0,  2.0,  10.0,  50.0,  50.0,  50.0, 100000000.0 
+   -1000, -1000, -1000.2, -600.0, -600.0, -600.0, -2.0, -2.0, -10.0, -50.0, -50.0, -50.0, 0.0,
+   -250., -250., -0.2,  600.0,  600.0,  600.0,  2.0,  2.0,  10.0,  50.0,  50.0,  50.0, 100000000.0 
+  ]
+ ]
+ # (fx, fy, fz)_[N], (tau_x, tau_y, tau_z)_[Nm]
+ Vs_thermal: [[ 0.0, 0.0, -100.0, 0.0, 0.0, 0.0 ] ]
+ wind_duty_cycle: 0.5
+ # wind_period: 100
+ wind_period: 1000
+ # wind_period: 500
+ # wind_period: 100
+ # Vs_thermal: [[ 0.0, 0.0, -100.0, 0.0, 0.0, 0.0 ] ]
+ # wind_duty_cycle: 0.5
+ # wind_period: 100
+ #########
+ rollout_mode: "uct-mpc" 
+ #########
+ dots_expansion_mode: "SpectralSearch"
+ dots_initialize_mode: "empty_control" # "thermal_compensation", "closest_equillibrium", "empty_control", "random_trajectory"
+ dots_special_actions: ["empty"]
+ dots_num_branches: 30
+ dots_spectral_branches_mode: "my_idxs"
+ # my_idxs: [3,4,5,9,10,11]
+ # my_idxs: [3,4]
+ # my_idxs: [3,4]
+ my_idxs: [3,4,5]
+ # my_idxs: [3,4,10]
+ # my_idxs: [3,4,5,9]
+ dots_control_mode: "closed_loop_discrete"
+ # dots_control_mode: "open_loop"
+ dots_scale_mode: "empty"
+ dots_verbose: False
+ dots_decision_making_horizon: 500
+ # dots_decision_making_horizon: 1000
+ dots_dynamics_horizon: 25
+ dots_greedy_rate: 0.75 
+ dots_greedy_min_dist: 0.15 
+ # (px, py, pz, vx, vy, vz, roll pitch yaw, rollrate, pitchrate, yawrate, time)
+ dots_modal_damping_mode: "damp_displacement_between_systems"
+ dots_modal_damping_gains: [0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75] 
+ # dots_modal_damping_gains: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5] 
+ # dots_modal_damping_gains: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] 
+ # dots_rho: 1.0 
+ dots_rho: [ 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0] 
+ # dots_rho: [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1] 
+ # dots_rho: [ 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01] 
+ # dots_rho: [ 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0] 
+ dots_greedy_gain: 0.5 
+ dots_baseline_mode_on: false
+ dots_num_discrete_actions: 3
+ #########
+ # uct_mode : "no_cbds"
+ # uct_mode : "cbds"
+ uct_mode : "no_cbds"
+ uct_downsample_traj_on : True
+ # uct_downsample_traj_on : False
+ # uct_downsample_traj : -1 # -1 is no downsampling 
+ uct_N : 100000
+ # uct_N : 10000
+ # uct_max_depth : 10
+ # uct_max_depth : 20
+ uct_max_depth : 20
+ # uct_max_depth : 20
+ uct_mpc_depth : 2
+ uct_c : 2.0
+ uct_dt : 0.01 # sec
+ uct_wct : 30.0 # sec
+ uct_export_topology : False
+ uct_export_node_states : False
+ # uct_export_trajs : True
+ uct_export_trajs : True
+ uct_export_cbdsbds : False
+ uct_export_tree_statistics : False
+ uct_heuristic_mode: "shuffled" # ["sorted", "shuffled"]
+ uct_tree_exploration: "puct" # ["uct", "puct"]
+ # uct_tree_exploration: "uct" # ["uct", "puct"]
+ uct_verbose : False
+ #########
+ neural_thermal_scale: 0.7 # 0.6 kills scp (and no lower value does)
+ # 
+ max_alpha: 0.33 # rad 
+ max_beta:  0.33 # rad 
+ # max_alpha: 6.28 # rad 
+ # max_beta:  6.28 # rad 
+ # linear aero model 
+ rho: 1.268 # kg / m^3
+ S: 0.55 # m^2, planform area of the wing surface
+ b: 2.90 # m, wing span 
+ c: 0.19 # m, length of the mean aerodynamic chord 
+ # observation model 
+ obs_cone_length: 150.0 # m 
+ obs_cone_angle: 0.75 # pi/8, check units
+ obs_min_speed: 1.75 # scale drag force 
+ oswald_eff: 1.75 # # scale lift force in thermal
+ # Table E2
+ C_D_0: 0.043
+ C_D_alpha: 0.03
+ C_D_q: 0.0
+ C_D_delta_e: 0.0135
+ C_L_0: 0.23
+ C_L_alpha: 5.61
+ C_L_q: 7.95
+ C_L_delta_e: 0.13
+ C_M_0: 0.0135
+ C_M_alpha: -2.74
+ C_M_q: -38.21
+ C_M_delta_e: -0.99
+ C_Y_0: 0.0
+ C_Y_beta: -0.83
+ C_Y_p: 0.0
+ C_Y_r: 0.0
+ C_Y_delta_a: 0.075
+ C_Y_delta_r: 0.190
+ C_l_0: 0.0
+ C_l_beta: -0.130
+ C_l_p: -0.51
+ C_l_r: 0.25
+ C_l_delta_a: 0.17
+ C_l_delta_r: 0.0024
+ C_n_0: 0.0
+ C_n_beta: 0.073
+ C_n_p: -0.069
+ C_n_r: -0.095
+ C_n_delta_a: -0.011
+ C_n_delta_r: -0.069
+ # nonlinear aero model 
+ alpha_0: 0.47 # rad
+ M: 50.0
+ C_D_p: 0.25
+ # oswald_eff: 0.9 # (??)
+ # special takeoff regime constraint 
+ alpha_takeoff: 0.47 # rad, same as alpha_0 (onset of stall)? 
+ beta_takeoff: 0.26 # deg
+ speed_takeoff: 5.0 # m/s
+ # aero clipping 
+ aero_scale : [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+ aero_clip : [
+  -1000000.0, -1000000.0, -1000000.0, -1000000.0, -1000000.0, -1000000.0, 
+   1000000.0,  1000000.0,  1000000.0,  1000000.0,  1000000.0,  1000000.0] 
+ ######### 
+ ud_mcts_num_points_per_dimension: 3 
+ #########
+ plot_max_num_trees: 20
+ plot_max_num_traj_per_tree: 1000
+ plot_max_num_points_per_traj: 10
+ #########
+ #########
+ model_device: "cpu" 
+ model_overfit_mode: False
+ model_training_mode: "None" # ["None", "spectral_normalization", "lipshitz_regularization"]
+ model_lipshitz_const: 0.005 # constraint for "spectral_normalization" mode, or lambda = 1 / model_lipshitz_const for regularization
+ model_train_test_ratio: 0.8
+ model_batch_size: 64
+ model_initial_learning_rate: 0.0001
+ model_num_epochs: 200
+ model_hidden_dim: 8
+ model_input_dim: 17 # 12 (state without time) + 4 (quadrotor inputs)
+ model_output_dim: 6
+ model_num_hidden_layers: 2
+ model_activation: "relu"
+ model_path: "../hardware/b2_neuralaero_model.pt"
