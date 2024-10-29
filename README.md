@@ -1,7 +1,7 @@
 # Monte Carlo Tree Search with Spectral Expansion for Planning with Dynamical Systems
 
 <!-- [https://doi.org/10.5061/dryad.xgxd254r1](https://doi.org/10.5061/dryad.xgxd254r1) -->
-[todo: doi to dryad link] (doi to dryad link)
+[https://doi.org/10.5061/dryad.s7h44j1h5](https://doi.org/10.5061/dryad.s7h44j1h5)
 
 Authors: Benjamin Riviere*, John Lathrop*, Soon-Jo Chung. * denotes Equal contribution. 
 
