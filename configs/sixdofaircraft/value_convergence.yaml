@@ -75,20 +75,28 @@
  dots_greedy_rate: 0.75 
  dots_greedy_min_dist: 0.15 
  # (px, py, pz, vx, vy, vz, roll pitch yaw, rollrate, pitchrate, yawrate, time)
+ # dots_modal_damping_mode: keep this as is
  dots_modal_damping_mode: "damp_displacement_between_systems"
+ # dots_modal_damping_gains: scale eigenvalues 
  dots_modal_damping_gains: [0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75] 
- # dots_rho: 1.0 
+ # dots_rho: gains, "Q" matrix in DARE controller
  dots_rho: [ 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0] 
+ # dots_rho: gains, "Q" matrix in DARE controller
  dots_greedy_gain: 0.5 
  dots_baseline_mode_on: false
  dots_num_discrete_actions: 3
  #########
  uct_mode : "no_cbds"
  uct_downsample_traj_on : True
+ # number of simulations
  uct_N : 100000
+ # depth of tree search
  uct_max_depth : 10
+ # number of steps between planner calls
  uct_mpc_depth : 2
+ # exploration constant in UCT
  uct_c : 5.0
+ # dont change this 
  uct_dt : 0.01 # sec
  uct_wct : 1200.0 # sec
  uct_export_topology : False
