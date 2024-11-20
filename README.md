@@ -48,7 +48,7 @@ Basic dependencies
 ```bash
 sudo apt install build-essential
 sudo apt install libeigen3-dev
-sudo apt install libyaml-cpp0.5v5 libyaml-cpp-dev libspdlog-dev libfmt-dev
+sudo apt install libyaml-dev
 ```
 
 Use conda for most dependencies. 
@@ -62,7 +62,7 @@ conda develop /home/ben/projects/dots/src/
 ```
 
 ## Build
-from project directory, 
+from `~/src/`, and with conda activated
 ```bash
 mkdir build
 cd build 
@@ -87,5 +87,5 @@ python value_convergence.py
 To make the policy convergence plot in the paper (fig 5d)
 ```
 cd ~/scripts/
-python value_convergence.py
+python python_convergence.py
 ```
