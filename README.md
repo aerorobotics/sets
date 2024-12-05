@@ -1,33 +1,30 @@
 # Monte Carlo Tree Search with Spectral Expansion for Planning with Dynamical Systems
 
-<!-- [https://doi.org/10.5061/dryad.xgxd254r1](https://doi.org/10.5061/dryad.xgxd254r1) -->
-[https://doi.org/10.5061/dryad.s7h44j1h5](https://doi.org/10.5061/dryad.s7h44j1h5)
-
 Authors: Benjamin Riviere*, John Lathrop*, Soon-Jo Chung. * denotes Equal contribution. 
 
-Data and source code are presented here for our Science Robotics paper: [Monte Carlo Tree Search with Spectral Expansion for Planning with Dynamical Systems] (todo: link to science article). This work develops and demonstrates the Spectral Expansion Tree Search (SETS) algorithm, which plans dynamical motions for robots using an efficient discrete representation. 
+Data and source code are presented here for our Science Robotics paper: [Monte Carlo Tree Search with Spectral Expansion for Planning with Dynamical Systems](https://www.science.org/doi/10.1126/scirobotics.ado1010). This work develops and demonstrates the Spectral Expansion Tree Search (SETS) algorithm, which plans dynamical motions for robots using an efficient discrete representation. 
 
 A video overview which accompanies our paper can be found below. It presents our hardware experiments which demonstrate that our algorithm can plan complex motions in real-time. The video also provides a visual summary of how our algorithm operates.
 
-[![Full overview video] [(todo: link to youtube thumbnail)] (todo: link to youtube video) "Monte Carlo Tree Search with Spectral Expansion")
+[Overview video](https://www.youtube.com/watch?v=o2ctFPs7OD4) 
 
 ## Citation
 
 The data and code here are for personal and educational use only and provided without warranty; written permission from the authors is required for further use. Please cite our work as follows:
 
-todo: citation 
-<!-- > @article{
-> doi:10.1126/scirobotics.adn4722,
-> author = {James Ragan  and Benjamin Riviere  and Fred Y. Hadaegh  and Soon-Jo Chung },
-> title = {Online tree-based planning for active spacecraft fault estimation and collision avoidance},
-> journal = {Science Robotics},
-> volume = {11},
-> number = {93},
-> pages = {eadn4722},
-> year = {2024},
-> doi = {10.1126/scirobotics.adn4722},
-> URL = {[https://www.science.org/doi/abs/10.1126/scirobotics.adn4722}](https://www.science.org/doi/abs/10.1126/scirobotics.adn4722}),
-> eprint = {[https://www.science.org/doi/pdf/10.1126/scirobotics.adn4722}}](https://www.science.org/doi/pdf/10.1126/scirobotics.adn4722}}) -->
+@article{
+	doi:10.1126/scirobotics.ado1010,
+	author = {Benjamin Rivière  and John Lathrop  and Soon-Jo Chung },
+	title = {Monte Carlo tree search with spectral expansion for planning with dynamical systems},
+	journal = {Science Robotics},
+	volume = {9},
+	number = {97},
+	pages = {eado1010},
+	year = {2024},
+	doi = {10.1126/scirobotics.ado1010},
+	URL = {https://www.science.org/doi/abs/10.1126/scirobotics.ado1010},
+	eprint = {https://www.science.org/doi/pdf/10.1126/scirobotics.ado1010},
+}
 
 
 ## Dryad
@@ -36,6 +33,7 @@ The primary data and code is stored in the `sets.tar.gz` tarball and can be extr
 
 The directory contains the following subdirectories: `src` contains the solver and problem models in cpp and python bindings, `data` and `plots` stores the output of python scripts found in `scripts` with parameters specified in `configs`. We include two scripts: `value_convergence.py`, and `policy_convergence.py`, that should produce the plots in Figure 5 in the paper. There may be some small discreptancy in results because the solutions are anytime and therefore depend on machine-specific processor power. 
 
+[https://doi.org/10.5061/dryad.s7h44j1h5](https://doi.org/10.5061/dryad.s7h44j1h5)
 
 ## Github
 
@@ -58,7 +56,7 @@ conda env create --file environment.yml
 
 Add src to path:
 ```
-conda develop /home/ben/projects/dots/src/
+conda develop ~/src/
 ```
 
 ## Build
@@ -87,5 +85,5 @@ python value_convergence.py
 To make the policy convergence plot in the paper (fig 5d)
 ```
 cd ~/scripts/
-python python_convergence.py
+python policy_convergence.py
 ```
