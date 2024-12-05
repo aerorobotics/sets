@@ -12,6 +12,7 @@ A video overview which accompanies our paper can be found below. It presents our
 
 The data and code here are for personal and educational use only and provided without warranty; written permission from the authors is required for further use. Please cite our work as follows:
 
+```
 @article{
 	doi:10.1126/scirobotics.ado1010,
 	author = {Benjamin Rivière  and John Lathrop  and Soon-Jo Chung },
@@ -25,6 +26,7 @@ The data and code here are for personal and educational use only and provided wi
 	URL = {https://www.science.org/doi/abs/10.1126/scirobotics.ado1010},
 	eprint = {https://www.science.org/doi/pdf/10.1126/scirobotics.ado1010},
 }
+```
 
 
 ## Dryad
